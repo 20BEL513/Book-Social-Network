@@ -1,0 +1,11 @@
+# Ignore node modules
+book-network-ui/node_modules/
+
+# Maven / Java
+book-network/target/
+*.log
+*.class
+
+# OS files
+.DS_Store
+Thumbs.db

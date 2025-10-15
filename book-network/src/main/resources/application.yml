@@ -1,0 +1,22 @@
+server:
+  port: 8761
+  servlet:
+    context-path: /api/v1
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 50MB
+  profiles:
+    active: dev
+
+# ✅ CORRECT SpringDoc configuration
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+    operations-sorter: method
+    tags-sorter: alpha
+    display-request-duration: true
