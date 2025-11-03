@@ -34,7 +34,6 @@ services:
     container_name: mail-dev-bsn
     image: maildev/maildev
     ports:
-      - "1080:1080"
       - "1025:1025"
     networks:
       - spring-demo
@@ -59,3 +58,5 @@ networks:
 #volumes:
 #  postgres-data:
 #  pgadmin-data:
+
+#email app password:wifi rzzz pzip dtmu

@@ -23,7 +23,8 @@ import java.time.LocalDateTime;
 public class BaseEntity {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "base_entity_seq")
+    @SequenceGenerator(name = "base_entity_seq", sequenceName = "base_entity_seq", allocationSize = 1)
     private Integer id;
 
     @CreatedDate
@@ -36,8 +37,8 @@ public class BaseEntity {
 
     @CreatedBy
     @Column(nullable = false,updatable = false)
-    private Integer createdBy;
+    private String createdBy;
 
     @LastModifiedBy
-    private Integer lastModifiedBy;
+    private String lastModifiedBy;
 }

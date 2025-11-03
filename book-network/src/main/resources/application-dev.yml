@@ -26,6 +26,12 @@ spring:
           connectiontimeout: 5000
           timeout: 3000
           writetimeout: 5000
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: "http://localhost:9090/realms/book-social-network"
   servlet:
     multipart:
       max-file-size: 50MB
@@ -33,14 +39,17 @@ spring:
 
 # ✅ Combined application configuration
 application:
-  security:
-    jwt:
-      secret-key: 2785d77e200be5d57af1a39b7ad5460b10e5a52347b3e204d36df1d93b28d1c1
-      expiration: 86400000
-  servlet:
-    multipart:
-      max-file-size: 50MB
-      max-request-size: 50MB
+#  security:
+#    jwt:
+#      secret-key: 2785d77e200be5d57af1a39b7ad5460b10e5a52347b3e204d36df1d93b28d1c1
+#      expiration: 86400000
+#  mailing:
+#    frontend:
+#      activation-url: http://localhost:4200/activate-account
+#  servlet:
+#    multipart:
+#      max-file-size: 50MB
+#      max-request-size: 50MB
   file:
     upload:
       photos-output-path: "./uploads"

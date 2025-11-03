@@ -9,3 +9,5 @@ book-network/target/
 # OS files
 .DS_Store
 Thumbs.db
+
+keycloak/realm/

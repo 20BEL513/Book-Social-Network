@@ -27,18 +27,24 @@ public class FeedBackService {
     private final FeedbackMapper feedbackMapper;
 
     public Integer save(@Valid FeedbackRequest request, Authentication connectedUser) {
+        // fetch real managed Book
         Book book = bookRepository.findById(request.bookId())
                 .orElseThrow(() -> new EntityNotFoundException("No book found with ID:: " + request.bookId()));
+
         if (book.isArchived() || !book.isShareable()) {
             throw new OperationNotPermittedException("You cannot give feedback for an archived or not shareable book");
         }
-        // User user = ((User) connectedUser.getPrincipal());
+
         if (Objects.equals(book.getCreatedBy(), connectedUser.getName())) {
             throw new OperationNotPermittedException("You cannot give feedback to your own book");
         }
-        Feedback feedback = feedbackMapper.toFeedback(request);
-        return feedBackRepository.save(feedback).getId();
+
+        // pass the managed Book to the mapper
+        Feedback feedback = feedbackMapper.toFeedback(request, book);
+
+        return feedBackRepository.save(feedback).getId(); // Hibernate will generate the ID
     }
+
 
     @Transactional
     public PageResponse<FeedbackResponse> findAllFeedbacksByBook(Integer bookId, int page, int size, Authentication connectedUser) {

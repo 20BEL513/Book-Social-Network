@@ -1,0 +1,17 @@
+.navbar-nav .nav-link {
+  color: black;
+  transition: background-color 0.3s, color 0.3s;
+
+  &:hover {
+    background-color: #d6e5f1;
+    border-radius: 5px;
+    text-decoration: underline;
+  }
+
+  &.active {
+    color: #24a7e9 !important;
+    font-weight: 600;
+    background-color: #e7f3fc;
+    border-radius: 5px;
+  }
+}
